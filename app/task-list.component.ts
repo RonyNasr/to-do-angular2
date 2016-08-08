@@ -22,9 +22,9 @@ import {DonePipe} from './done.pipe';
     [class.selected]="currentTask === selectedTask"
     [task]="currentTask">
   </task-display>
+  <new-task (onSubmitNewTask)="createTask($event)"></new-task>
   <edit-task-details *ngIf="selectedTask" [task]="selectedTask">
   </edit-task-details>
-  <new-task (onSubmitNewTask)="createTask($event)"></new-task>
   `
 })
 export class TaskListComponent {
@@ -39,9 +39,9 @@ export class TaskListComponent {
     this.selectedTask = clickedTask;
     this.onTaskSelect.emit(clickedTask);
   }
-  createTask([description, priority]: string[]): void {
+  createTask([description, priority, category]: string[]): void {
     this.taskList.push(
-      new Task(description, this.taskList.length, priority)
+      new Task(description, this.taskList.length, priority, category)
     );
   }
   onChange(filterOption) {
