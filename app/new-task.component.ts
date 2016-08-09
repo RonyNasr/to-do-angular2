@@ -9,7 +9,18 @@ import {Task} from './task.model';
       <h3>Create Task:</h3>
       <input placeholder="Description" class="input-lg form-control" #newDescription>
       <input placeholder="Priority" class="input-lg form-control" #newPriority>
-      <input placeholder="Category" class="input-lg form-control" #newCategory>
+      <div class="radio">
+        <label><input type="radio" name="Category" id="work" value="Work"  #newCategory>Work</label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" name="Category" id="school" value="School" #newCategory>School</label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" name="Category" id="hobby" value="Hobby" #newCategory>Hobby</label>
+      </div>
+      <div class="radio">
+        <label><input type="radio" name="Category" id="home" value="Home" #newCategory>Home</label>
+      </div>
       <button class="btn-primary btn-lg add-button"(click)="addTask(newDescription, newPriority, newCategory)">Add</button>
     </div>
   `
@@ -23,6 +34,5 @@ export class NewTaskComponent {
     this.onSubmitNewTask.emit([userDescription.value, userPriority.value, userCategory.value]);
     userDescription.value = "";
     userPriority.value = "";
-    userCategory.value = "";
   }
 }
